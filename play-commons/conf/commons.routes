@@ -1,0 +1,1 @@
+GET   /assets/*file   com.wellnr.commons.play.CommonAssets.at(path="/public", file)

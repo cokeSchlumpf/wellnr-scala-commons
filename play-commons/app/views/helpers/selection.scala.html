@@ -1,0 +1,23 @@
+@**
+ * Generate an HTML selection.
+ *
+ * Example:
+ * {{{
+ * @checkbox(field = myForm("done"))
+ * }}}
+ *
+ * @param label The label of the checkbox.
+ * @param field The form field.
+ * @param args Set of extra HTML attributes.
+ * @param handler The field constructor.
+ *@
+@(label: String, id: String, values: List[(String, String, Boolean)], multiple: Boolean, field: play.api.data.Field, args: (Symbol,Any)*)(implicit handler: views.html.helper.FieldConstructor, lang: play.api.i18n.Lang)
+
+@views.html.helper.input(field, args:_*) { (id, name, value, htmlArgs) =>
+	<select title="@label" class="selectpicker" name="@name" id="@id"@(if(multiple) " multiple" else "") @toHtmlArgs(htmlArgs)>
+		@for(value <- values) {
+			<option value="@value._1" @(if(value._3) "selected" else "")>@value._2</option>
+		}
+	</select>
+}
+ 

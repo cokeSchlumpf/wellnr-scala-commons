@@ -1,0 +1,9 @@
+@(content: Html)(sidebar: Html = Html(""))
+
+@common.container {
+	@common.tabs{
+		@content
+	}{
+		@sidebar
+	}.map(common.columns.apply, 8, 4)
+}

@@ -1,0 +1,16 @@
+@**
+ * Generate an HTML radio box.
+ *
+ * @param label The label of the checkbox.
+ * @param field The form field.
+ * @param args Set of extra HTML attributes.
+ * @param handler The field constructor.
+ *@
+@(label: String, boxValue: String, id: String, checked: Boolean, field: play.api.data.Field, args: (Symbol,Any)*)(implicit handler: views.html.helper.FieldConstructor, lang: play.api.i18n.Lang)
+
+@views.html.helper.input(field, args:_*) { (_id, name, value, htmlArgs) =>
+    <div class="radio">
+        <input type="radio" id="@id" name="@{name}" value="@boxValue" @(if(checked) "checked" else "") @toHtmlArgs(htmlArgs.filterKeys(_ != 'value)) />
+        <label for="@id">@label</label>
+    </div>
+}

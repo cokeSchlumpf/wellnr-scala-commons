@@ -1,0 +1,151 @@
+@* legal Template File *@
+@(implicit request: jp.t2v.lab.play2.stackc.RequestWithAttributes[_])
+
+@main("About Me")(request) {
+
+	@common.contentheader {
+		<p>
+			<span class="h1">Hi,</span> my name is Michael. I'm an IT Architect and Consultant at IBM Germany who currently starts blogging about some technical topics I'm interested in and/ or I'm working on during my daily life.  
+		</p>
+	}
+
+	@common.container {
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Education</h2>
+			</div>
+			
+			<div class="col-md-6">
+				<img src="http://cv.michaelwellner.de/images/bachelor.png" alt="B. Sc. Applied Computer Science - DHBW Stuttgart 2011" />
+				<p>
+					<strong>B. Sc. Computer Science</strong><br />
+					DHBW Stuttgart 2011 
+				</p>
+			</div>
+			<div class="col-md-6">
+				<img src="http://cv.michaelwellner.de/images/certified.png" alt="Certified Associate in Project Management - PMI 2012" />
+				<p>
+					<strong>Certified Associate in PM</strong><br />
+					PMI, 2012
+				</p>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Major Skills</h2>
+			</div>
+			<div class="col-md-3">
+				<p class="skill">
+					SW Development<br />
+					<span>...</span>
+				</p>
+			</div>
+			<div class="col-md-3">
+				<p class="skill">
+					Methods<br />
+					<span>...</span>
+				</p>
+			</div>
+			<div class="col-md-3">
+				<p class="skill">
+					DB Development<br />
+					<span>...</span>
+				</p>
+			</div>
+			<div class="col-md-3">
+				<p class="skill">
+					UI Design<br />
+					<span>...</span>
+				</p>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Professional Experience</h2>
+			</div>
+			
+			<div class="col-md-12 timeline">
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-md-1 timeline-start"></div>
+					<div class="col-md-2 timeline-line"></div>
+					<div class="col-md-1 timeline-end"></div>
+					<div class="col-md-7">
+						<p>
+							<strong>Lorem Ipsum</strong><br />
+							...
+						</p>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-3"></div>
+					<div class="col-md-1 timeline-start"></div>
+					<div class="col-md-1 timeline-end"></div>
+					<div class="col-md-7">
+						<p>
+							<strong>Lorem Ipsum</strong><br />
+							...
+						</p>
+					</div>
+				</div>
+				
+				<div class="row timeline-years">
+					<div class="col-md-1"></div>
+					<div class="col-md-1">2005</div>
+					<div class="col-md-1">2006</div>
+					<div class="col-md-1">2007</div>
+					<div class="col-md-1">2008</div>
+					<div class="col-md-1">2009</div>
+					<div class="col-md-1">2010</div>
+					<div class="col-md-1">2011</div>
+					<div class="col-md-1">2012</div>
+					<div class="col-md-1">2013</div>
+					<div class="col-md-1">2014</div>
+					<div class="col-md-1"></div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-4 text-right">
+						<p>
+							<strong>Lorem Ipsum</strong><br />
+							...
+						</p>
+					</div>
+					<div class="col-md-1 timeline-start"></div>
+					<div class="col-md-2 timeline"></div>
+					<div class="col-md-1 timeline-end"></div>
+					<div class="col-md-4"></div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-7 text-right">
+						<p>
+							<strong>Lorem Ipsum</strong><br />
+							...
+						</p>
+					</div>
+					<div class="col-md-1 timeline-start"></div>
+					<div class="col-md-3 timeline"></div>
+					<div class="col-md-1"></div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-9 text-right">
+						<p>
+							<strong>Lorem Ipsum</strong><br />
+							...
+						</p>
+					</div>
+					<div class="col-md-1 timeline-start"></div>
+					<div class="col-md-1 timeline"></div>
+					<div class="col-md-1"></div>
+				</div>
+			</div>
+		</div>
+
+	}
+
+}

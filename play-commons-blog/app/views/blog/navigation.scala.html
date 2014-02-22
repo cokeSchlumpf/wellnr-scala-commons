@@ -1,0 +1,13 @@
+@(topics: List[Topic])
+
+<div class="sidebar-nav">
+	@common.navlist(
+		("", List(
+			("Blog Homepage", routes.FrontendController.index)
+		))
+	)()
+	
+	@common.navlist(
+		("Topics", topics.map(t => (t.title, routes.FrontendController.topic(t.ID))))
+	)()
+</div>

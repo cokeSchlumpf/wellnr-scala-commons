@@ -1,0 +1,44 @@
+@**
+ * Copyright 2013. Michael Wellner.
+ *
+ * Defines the default wrapper for all HTML Form fields.
+ *
+ * Example:
+ * {{{
+ * @form(action = routes.Users.submit, args = 'class -> "myForm") {
+ *   ...
+ * }
+ * }}}
+ *
+ * @param action The submit action.
+ * @param args Set of extra HTML attributes.
+ * @param body The form body.
+ * @param form The play.api.data.Form object on which this HTML form is based on.
+ *
+ * @author Michael Wellner
+ * @since Dec 1, 2013
+ *@
+@(action: play.api.mvc.Call, args: (Symbol,String)*)(body: => Html)(implicit form: play.api.data.Form[_], lang: play.api.i18n.Lang)
+
+@import common.FormConstructor.i18n
+
+<form action="@action.url" method="@action.method" @toHtmlArgs(args.toMap)>
+	@if(form.globalErrors.size > 0) {
+		<div class="alert alert-danger alert-square">
+			@i18n(form.globalErrors(0).message)(lang)
+		</div>
+	} else {
+		@if(form.errors.size > 0) {
+			<div class="alert alert-danger alert-square">
+				Your submitted form contains the following mistakes:
+				<ul>
+					@for(error <- form.errors) {
+						<li>@i18n(error.message)(lang)</li>
+					}
+				</ul>
+			</div>
+		} 
+	}
+
+    @body
+</form>

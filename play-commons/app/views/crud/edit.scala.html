@@ -1,0 +1,62 @@
+@(parent: com.wellnr.commons.play.controllers.CRUDController.PARENTVIEW, displayname: String)(viewmodel: com.wellnr.commons.play.viewmodels.EditViewModel[_], submitaction: play.api.mvc.Call)(data: play.api.data.Form[_], request: jp.t2v.lab.play2.stackc.RequestWithAttributes[_])
+
+@import com.wellnr.commons.play.viewmodels._
+@import views.html.common.BootstrapForm._
+
+@createform(implicit data: play.api.data.Form[_]) = {
+	@form(action = submitaction, "class".s -> "pc-form") {
+		
+		<h2>Edit @displayname</h2>
+		
+		@for(field <- viewmodel.formviewmodel.fields) {
+				@field match {
+					case EditViewModel.Text(label, name, _, optional) => {
+						@inputText(name)(label)
+					}
+					case EditViewModel.Password(label, name, _, optional) => {
+						@inputPassword(name)(label)
+					}
+					case EditViewModel.EMail(label, name, _, optional) => {
+						@inputEmail(name)(label)
+					}
+					case EditViewModel.SingleSelect(label, name, _, options, optional) => {
+						@select(name, options.map(o => (o._1.toString, o._2.toString)))(label)
+					} 
+					case EditViewModel.MultiSelect(label, name, _, options, optional) => {
+						@select(name, options.map(o => (o._1.toString, o._2.toString)), "multiple".s -> true)(label)
+					}
+					case EditViewModel.Hidden(name, _) => {
+						@hidden(name)
+					}
+					case EditViewModel.DateSelect(label, name, _, optional) => {
+						@inputDate(name)(label)
+					}
+					case EditViewModel.Textarea(label, name, _, optional) => {
+						@textarea(name)(label)	
+					}
+					case _ => {
+						Not implemented	
+					}
+				}
+		}
+		
+		
+		@common.spacer(20)
+		
+		@**
+			TODO: submit container should be created via field constructor or similar since this will not look nice with all field styles.
+		**@
+		
+		@common.tabs {
+			
+		}{
+			@submit("Submit")
+		}.map(common.columns.apply, 3, 9)
+	}
+} 
+
+@parent("Edit " + displayname, Html(""))(request) {
+	
+	@createform(data)
+	
+}

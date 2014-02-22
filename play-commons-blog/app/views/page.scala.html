@@ -1,0 +1,7 @@
+@(title: String, scripts: Html = Html(""))(request: jp.t2v.lab.play2.stackc.RequestWithAttributes[_])(content: Html)
+
+@main(title, scripts)(request) {
+	@common.container {
+		@content
+	}
+}

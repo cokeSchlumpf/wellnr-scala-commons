@@ -1,0 +1,13 @@
+@**
+ * Copyright 2013. IBM Germany.
+ *
+ * Generate a HTML submit button.
+ *
+ * @param label
+ * 		The label of the button.
+ *
+ * @author Michael Wellner/Germany/IBM
+ * @since Dec 1, 2013
+ *@
+@(inputType: String, label: String, classes: String, name: String, buttonValue: String)
+<button type="@inputType" class="btn btn-square @classes" value="@buttonValue" name="@name" id="@{name}_@{buttonValue}">@label</button>

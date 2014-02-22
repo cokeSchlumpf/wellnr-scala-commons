@@ -1,0 +1,13 @@
+@(items: (String, List[(String, Any)])*)(classname: String = "nav nav-list")
+
+<ul class="@classname">
+	@for(group <- items) {
+		@if(group._1.length > 0) { 
+			<li class="nav-header">@group._1</li>
+		}
+		
+		@for(link <- group._2) {
+			<li><a href="@link._2">@link._1</a></li>	
+		}	
+	}
+</ul>

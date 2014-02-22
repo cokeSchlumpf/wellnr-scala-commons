@@ -1,0 +1,14 @@
+@(parent: com.wellnr.commons.play.controllers.CRUDController.PARENTVIEW, displayname: (String, String), add: play.api.mvc.Call)(model: com.wellnr.commons.play.viewmodels.AbstractTableModel[_], request: jp.t2v.lab.play2.stackc.RequestWithAttributes[_])
+
+@parent(displayname._1, Html(""))(request) {
+	
+	@common.tabs{
+		<h2>@displayname._1</h2>	
+	}{
+		<div style="text-align: right; margin-top: 25px; padding-right: 10px;">
+			<a href="@add" class="btn btn-primary btn-square">Add @displayname._2.toLowerCase</a>
+		</div>
+	}.map(common.columns.apply)
+	
+	@viewmodelsviewer.table(model)
+}

@@ -1,0 +1,22 @@
+@**
+ * Bootstrap field constructor.
+ *
+ * @param el The field informations.
+ *@
+@(elements: helper.FieldElements)
+
+@common.tabs{
+	@if(elements.label(elements.lang).toString.length > 0) {
+		<label for="@elements.id" class="pc-form-label">@elements.label(elements.lang)</label>
+	}
+}{
+	@elements.input
+	@elements.errors(elements.lang).map { error =>
+        <dd class="error">@error</dd>
+    }
+    @**
+    @elements.infos(elements.lang).map { info =>
+        <dd class="info">@info</dd>
+    }
+    **@
+}.map(common.columns.apply, 3, 9)

@@ -1,0 +1,17 @@
+@(title: String, scripts: Html = Html(""))(request: jp.t2v.lab.play2.stackc.RequestWithAttributes[_])(content: Html)
+
+@views.html.main("Administration - " + title)(request) {
+	@common.container {
+		@common.tabs {
+			@content
+		}{ 
+			<div class="sidebar-nav">
+				@common.navlist(("Admin Pages", List(
+					("Posts", AdminControllers.posts.routes.list),
+					("Topics", AdminControllers.topics.routes.list),
+					("Users", AdminControllers.users.routes.list)
+					)))()
+			</div>
+		}.map(common.columns.apply, 10, 2)
+	}
+}

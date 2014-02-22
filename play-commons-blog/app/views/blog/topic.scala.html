@@ -1,0 +1,19 @@
+@(model: viewmodels.ShowTopicViewModel)(request: jp.t2v.lab.play2.stackc.RequestWithAttributes[_])
+
+@import play.api.Play
+
+@main("Private Blog of Michael Wellner")(request) {
+
+	@if(model.headentry.isDefined) {
+		@common.contentheader(entry(model.headentry.get))
+	}	
+	
+	@common.content {
+		@for(e <- model.entries) {
+			@entry(e)
+		}
+	} { 
+		@navigation(model.topics)
+	}
+	
+}

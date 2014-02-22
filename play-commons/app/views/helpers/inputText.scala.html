@@ -1,0 +1,24 @@
+@**
+ * Copyright 2013. IBM Germany.
+ *
+ * Generate an HTML input element.
+ *
+ * Example:
+ * {{{
+ * @inputText(inputType = "email", label = "E-Mail Address", field = myForm("email"))
+ * }}}
+ *
+ * @param inputType The type of the input element.
+ * @param label The label of the input element.
+ * @param field The form field.
+ * @param args Set of extra attributes.
+ * @param handler The field constructor.
+ *
+ * @author Michael Wellner/Germany/IBM
+ * @since Dec 1, 2013
+ *@
+@(inputType: String, label: String, field: play.api.data.Field, args: (Symbol,Any)*)(implicit handler: views.html.helper.FieldConstructor, lang: play.api.i18n.Lang)
+
+@views.html.helper.input(field, args.filter(_._1 != 'type):_*) { (id, name, value, htmlArgs) =>
+    <input type="@inputType" id="@id" name="@name" value="@value" class="form-control form-control-square" placeholder="@label" @toHtmlArgs(htmlArgs) />
+}

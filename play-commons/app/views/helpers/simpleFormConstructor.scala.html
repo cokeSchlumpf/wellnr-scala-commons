@@ -1,0 +1,13 @@
+@**
+ * Copyright 2013. IBM Germany.
+ *
+ * Defines the default wrapper for all HTML Form fields.
+ *
+ * @author Michael Wellner/Germany/IBM
+ * @since Dec 1, 2013
+ *@
+@(elements: helper.FieldElements)
+
+<div class="form-group @if(elements.hasErrors) {has-error}">
+	@elements.input
+</div>

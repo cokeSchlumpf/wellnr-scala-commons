@@ -1,0 +1,35 @@
+@(table: com.wellnr.commons.play.viewmodels.AbstractTableModel[_], headertemplate: (List[(String, Option[Int])], List[String]) => play.api.templates.HtmlFormat.Appendable = viewmodelsviewer.tableheader.f.apply _, rowtemplate: (List[String], List[String], Option[Html]) => play.api.templates.HtmlFormat.Appendable = viewmodelsviewer.tablerow.f.apply _)
+
+@transformaction(actions: List[com.wellnr.commons.play.viewmodels.TableAction], data: table.TYPE, id: Long) = {
+    @for(action <- actions) {
+	    @action match {
+	    	case table.TemplateAction(f) => {
+	    		@f(data)
+	    	}
+	    	case com.wellnr.commons.play.viewmodels.HyperlinkAction(label, href) => {
+				<a href="@href(id)" class="btn btn-square btn-sm">@label</a>
+			}
+	    	case _ => {
+	    		Unkown Action
+	    	}
+	    }
+    }
+}
+
+<table class="table table-hover">
+	@if(table.actions.size > 0) {
+		@headertemplate(table.headers.zip(table.widths) :+ ("", None), table.classNames :+ "actions")
+	} else {
+		@headertemplate(table.headers.zip(table.widths), table.classNames)
+	}
+	
+	<tbody>
+		@for(((id, row), data) <- table.rowsMap.zip(table.rowdata)) {
+			@if(table.actions.size > 0) {
+				@rowtemplate(row, table.classNames, Some(transformaction(table.actions, data, id)))
+			} else {
+				@rowtemplate(row, table.classNames, None)
+			}
+		}
+	</tbody>
+</table>

@@ -1,0 +1,112 @@
+@(title: String, scripts: Html = Html(""))(request: jp.t2v.lab.play2.stackc.RequestWithAttributes[_])(content: Html)
+
+@import play.api.Play
+@import com.wellnr.commons.play.routes.CommonAssets
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@title | wellnr.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel='shortcut icon' type='image/png' href='@CommonAssets.at("images/favicon.png")' />
+    
+    <link rel="stylesheet" href="@CommonAssets.at("css/bootstrap.min.css")" media="screen" />
+	<link rel="stylesheet" href="@CommonAssets.at("css/font-awesome.min.css")" media="screen">
+	<link rel="stylesheet" href="@CommonAssets.at("css/bootflat.css")" media="screen">
+	<link rel="stylesheet" href="@CommonAssets.at("css/bootflat-square.css")" media="screen">
+	<link rel="stylesheet" href="@CommonAssets.at("css/bootflat-extensions.css")" media="screen">
+	<link rel="stylesheet" href="@CommonAssets.at("css/bootstrap-select.min.css")" media="screen">
+	<link rel="stylesheet" href="@CommonAssets.at("css/bootstrap-datepicker.css")" media="screen">
+	<link rel="stylesheet" href="@CommonAssets.at("css/mfglabs-iconset.css")" media="screen">
+	<link rel="stylesheet" href="@CommonAssets.at("stylesheets/bootstrap-selectblocks.min.css")" media="screen">
+	<link rel="stylesheet" href="@CommonAssets.at("stylesheets/play-commons.min.css")" media="screen">
+	
+	<link rel="stylesheet" href="@routes.Assets.at("stylesheets/style.css")" media="screen">
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="@CommonAssets.at("javascripts/libs/html5shiv.js")"></script>
+      <script src="@CommonAssets.at("javascripts/libs/respond.min.js")"></script>
+    <![endif]-->
+    
+    <script src="@CommonAssets.at("javascripts/libs/jquery-1.10.1.min.js")" type='text/javascript'></script>
+    <script src="@CommonAssets.at("javascripts/libs/bootstrap.min.js")" type='text/javascript'></script>
+    <script src="@CommonAssets.at("javascripts/libs/bootstrap-select.min.js")" type='text/javascript'></script>
+    <script src="@CommonAssets.at("javascripts/libs/bootstrap-selectblocks.js")" type='text/javascript'></script>
+    <script src="@CommonAssets.at("javascripts/libs/bootstrap-datepicker.js")" type='text/javascript'></script>
+    <script src="@CommonAssets.at("javascripts/libs/jquery.icheck.js")" type='text/javascript'></script>
+    <script src="@CommonAssets.at("javascripts/libs/play-commons.js")" type='text/javascript'></script>
+    <script src="@routes.Application.javascriptroutes" type="text/javascript"></script>
+    
+    <script src="@routes.WebJarAssets.at(WebJarAssets.locate("knockout.js"))" type="text/javascript"></script>
+    
+    @scripts
+</head>
+<body>
+	 <!-- Docs master nav -->
+    <header class="navbar navbar-inverse navbar-fixed-top bf-docs-nav" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bf-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand"><span>wellnr</span>.com</a>
+            </div>
+            <nav class="collapse navbar-collapse bf-navbar-collapse" role="navigation">
+            	@controllers.Request.userOption(request) match {
+            		case Some(user) => {
+            			<ul class="nav navbar-nav navbar-right">
+            			<li><a href="@routes.Login.logout">Log out</a></li></li>
+		                    <li><a href="@controllers.AdminControllers.posts.routes.list">Admin</a></li></li>
+		                </ul>
+            		}	
+            		case _ => {
+            			
+            		}
+            	}
+            </nav>
+        </div>
+    </header>
+    
+    @content
+    
+    <footer class="bf-footer bf-footer-margin">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md-4">
+					<p class="legal">
+    					&copy; Michael Wellner 2014. <a href="@routes.FrontendController.legal">Terms</a>.<br />
+    				</p>
+    			</div>
+    			<div class="col-md-8 text-right">
+    				<a href="mailto:info@@michaelwellner.de" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-at"></span></a>
+    				<a href="http://www.michaelwellner.de" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-globe"></span></a>
+    				<a href="http://www.twitter.com/cokeSchlumpf" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-twitter"></span></a>
+    				<a href="http://www.facebook.com/wellnr" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-facebook"></span></a>
+    				<a href="https://plus.google.com/107831866287785178785/about" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-google_plus"></span></a>
+    				<a href="https://www.xing.com/profile/Michael_Wellner3" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-xing"></span></a>
+    				<a href="#" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-linked_in"></span></a>
+    				<a href="https://github.com/cokeSchlumpf" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-octopus"></span></a>
+    			</div>
+    		</div>
+    	</div>
+    </footer>
+    
+    <script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	    var disqus_shortname = '@Play.current.configuration.getString("wb.disqusShortname")';
+	
+	    /* * * DON'T EDIT BELOW THIS LINE * * */
+	    (function () {
+	        var s = document.createElement('script'); s.async = true;
+	        s.type = 'text/javascript';
+	        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+	    }());
+    </script>
+</body>
+</html>

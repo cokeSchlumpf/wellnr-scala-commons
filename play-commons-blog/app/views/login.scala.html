@@ -1,0 +1,26 @@
+@(loginForm: Form[com.wellnr.commons.play.controllers.UserLoginForm], request: jp.t2v.lab.play2.stackc.RequestWithAttributes[_])
+
+@import views.html.common.SimpleBootstrapForm._
+
+@createform(implicit playform: Form[_]) = {
+	
+	@form(controllers.routes.Login.loginPost, "class".s -> "wb-form-signin") {	
+		@inputEmail("email")(Some("E-Mail"))
+		@inputPassword("password")(Some("Password"))
+		@submit("Sign In")
+	}
+}
+
+@main("User Login")(request) {
+	@common.container {
+		@common.tabs{
+		
+		} {
+			<h2>Please sign in</h2>
+			@createform(loginForm)
+			
+		} {
+		
+		}.map(common.columns.apply)
+	}
+}

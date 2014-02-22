@@ -1,0 +1,14 @@
+@(entry: viewmodels.BlogEntryViewModel, complete: Boolean = false, showButtons: Boolean = true)
+<article @if(complete) { class="wb-complete" }>
+	@if(!complete) { <h1>@entry.entry.title</h1> }
+	
+	@if(complete) {
+		@Html(entry.htmlContent)
+	} else { 		
+		@Html(entry.htmlPreview)		
+		
+		@if(showButtons) {
+			<a href="@routes.FrontendController.entry(entry.entry.ID)" class="btn btn-square btn btn-primary">Read more ...</a> <span class="wb-blogentry-details"><time datetime="@entry.entry.created">@entry.created</time> by @entry.author | @Html(entry.topics.map(topic => Html(s"""<a href="${routes.FrontendController.topic(topic.ID)}" class="topic">${topic.title}</a>""")).mkString(", ")) | <a href="@routes.FrontendController.entry(entry.entry.ID)#disqus_thread" class="comments-count">0 Comments</a></span>
+		}
+	}
+</article>

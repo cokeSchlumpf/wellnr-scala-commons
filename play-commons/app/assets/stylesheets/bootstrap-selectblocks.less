@@ -1,0 +1,45 @@
+/*!
+ * bootstrap-selectblocks v1.0-SNAPSHOT
+ * https://github.com/cokeSchlumpf/bootstrap-selectblocks
+ *
+ * Copyright 2013 Michael Wellner.
+ * Licensed under the MIT License
+ */
+ 
+.list-group.sb-list-group {
+	.list-group-item.sb-list-group-item {
+		padding: 10px;
+		border: none;
+		border-bottom: 1px solid #ddd
+		margin: 0;
+		cursor: pointer;
+	}
+	
+	.list-group-item.sb-list-group-item .icon-check {
+		display: none;
+	}
+	
+	.list-group-item.sb-list-group-item.selected .icon-check {
+		display: inline;
+	}
+	
+	a.list-group-item.sb-list-group-item:active, 
+	a.list-group-item.sb-list-group-item:focus {
+		box-shadow: none;
+		outline: none;
+	}
+
+	a.list-group-item.sb-list-group-item:focus {
+		background-color: transparent;
+	}
+	
+	a.list-group-item.sb-list-group-item:focus:hover {
+		/** TODO: Get the right color or inherit from usual :hover */
+		background-color: #eee;
+	}
+}
+
+h4.sb-select-group {
+	border-left: 5px solid #2476a3;
+	padding: 5px 7px;
+}

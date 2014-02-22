@@ -1,0 +1,13 @@
+@**
+ * Copyright 2013. IBM Germany.
+ *
+ * Generate a HTML submit button.
+ *
+ * @param label
+ * 		The label of the button.
+ *
+ * @author Michael Wellner/Germany/IBM
+ * @since Dec 1, 2013
+ *@
+@(args: (Symbol,Any)*)
+<button @toHtmlArgs(args.filter(arg => !arg._1.name.startsWith("_") && arg._1 != 'id).toMap)>@args.toMap.get('_label).getOrElse("")</button>

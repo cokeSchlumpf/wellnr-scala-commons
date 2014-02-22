@@ -1,0 +1,258 @@
+/*  MFG Labs iconset 1.0
+    
+    -------------------------------------------------------
+    
+    License
+    -------------------------------------------------------
+    • The MFG Labs iconset font is licensed under the SIL Open Font License - http://scripts.sil.org/OFL
+    • MFG Labs inconset CSS files are licensed under the MIT License -
+      http://opensource.org/licenses/mit-license.html
+    • The MFG Labs iconset pictograms are licensed under the CC BY 3.0 License - http://creativecommons.org/licenses/by/3.0/
+    • Attribution is no longer required in Font Awesome 3.0, but much appreciated:
+      MFG Labs inconset by MFG Labs
+
+    Contact
+    -------------------------------------------------------
+    Email: martin.charpentier@mfglabs.com
+    Twitter: http://twitter.com/mfg_labs
+    
+
+    */
+@font-face {
+    font-family: 'mfg_labs_iconsetregular';
+    src: url('../fonts/mfglabsiconset-webfont.eot');
+    src: url('../fonts/mfglabsiconset-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/mfglabsiconset-webfont.woff') format('woff'),
+         url('../fonts/mfglabsiconset-webfont.ttf') format('truetype'),
+         url('../fonts/mfglabsiconset-webfont.svg#mfg_labs_iconsetregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+i, .mfglabs-icon {
+  font-family: 'mfg_labs_iconsetregular';
+  font-style: normal;
+  speak: none;
+  font-weight: normal;
+  font-size: 1em;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+.mfglabs-icon2x { font-size: 2em; }
+.mfglabs-icon3x { font-size: 3em; }
+.mfglabs-icon4x { font-size: 4em; }
+.mfglabs-icon5x { font-size: 5em; }
+.mfglabs-icon6x { font-size: 6em; }
+
+
+
+/* style exemples */
+.gradient {
+  color: #999;
+  text-shadow: 1px 1px 1px rgba(27, 27, 27, 0.19);
+  
+  background-image: -webkit-gradient(
+  linear,
+  left top, left bottom,
+  from(rgba( 182, 182, 182, 1)),
+  to(rgba(60, 60, 60, 1))
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.gradient:hover, .gradient .current {
+  color: #eee;
+	text-shadow: 0px 0px 3px rgba(255, 255, 255, 0.25);
+	
+  background-image: -webkit-gradient(
+  linear,
+  left top, left bottom,
+  from(rgba( 255, 255, 255, 1)),
+  to(rgba(187, 187, 187, 1))
+  );
+  
+}
+
+/*  MFG Labs iconset uses the Unicode Private Use Area (PUA) to ensure screen
+    readers do not read off random characters that represent icons.
+    We also use semantic unicode when they are available for the icon we provide. */
+
+.mfglabs-icon-cloud:before                { content: "\2601"; }
+.mfglabs-icon-at:before                   { content: "\0040"; }
+.mfglabs-icon-plus:before                 { content: "\002B"; }
+.mfglabs-icon-minus:before                { content: "\2212"; }
+
+.mfglabs-icon-arrow_up:before             { content: "\2191"; }
+.mfglabs-icon-arrow_down:before           { content: "\2193"; }
+.mfglabs-icon-arrow_right:before          { content: "\2192"; }
+.mfglabs-icon-arrow_left:before           { content: "\2190"; }
+.mfglabs-icon-chevron_down:before         { content: "\f004"; }
+.mfglabs-icon-chevron_up:before           { content: "\f005"; }
+.mfglabs-icon-chevron_right:before        { content: "\f006"; }
+.mfglabs-icon-chevron_left:before         { content: "\f007"; }
+.mfglabs-icon-reorder:before              { content: "\f008"; }
+.mfglabs-icon-list:before                 { content: "\f009"; }
+.mfglabs-icon-reorder_square:before       { content: "\f00a"; }
+.mfglabs-icon-reorder_square_line:before  { content: "\f00b"; }
+.mfglabs-icon-coverflow:before            { content: "\f00c"; }
+.mfglabs-icon-coverflow_line:before       { content: "\f00d"; }
+.mfglabs-icon-pause:before                { content: "\f00e"; }
+.mfglabs-icon-play:before                 { content: "\f00f"; }
+
+.mfglabs-icon-step_forward:before         { content: "\f010"; }
+.mfglabs-icon-step_backward:before        { content: "\f011"; }
+.mfglabs-icon-fast_forward:before         { content: "\f012"; }
+.mfglabs-icon-fast_backward:before        { content: "\f013"; }
+.mfglabs-icon-cloud_upload:before         { content: "\f014"; }
+.mfglabs-icon-cloud_download:before       { content: "\f015"; }
+.mfglabs-icon-data_science:before         { content: "\f016"; }
+.mfglabs-icon-data_science_black:before   { content: "\f017"; }
+.mfglabs-icon-globe:before                { content: "\f018"; }
+.mfglabs-icon-globe_black:before          { content: "\f019"; }
+.mfglabs-icon-math_ico:before             { content: "\f01a"; }
+.mfglabs-icon-math:before                 { content: "\f01b"; }
+.mfglabs-icon-math_black:before           { content: "\f01c"; }
+.mfglabs-icon-paperplane_ico:before       { content: "\f01d"; }
+.mfglabs-icon-paperplane:before           { content: "\f01e"; }
+.mfglabs-icon-paperplane_black:before     { content: "\f01f"; }
+
+/* \f020 doesn't work in Safari. all shifted one down */
+.mfglabs-icon-color_balance:before        { content: "\f020"; }
+.mfglabs-icon-star:before                 { content: "\2605"; }
+.mfglabs-icon-star_half:before            { content: "\f022"; }
+.mfglabs-icon-star_empty:before           { content: "\2606"; }
+.mfglabs-icon-star_half_empty:before      { content: "\f024"; }
+.mfglabs-icon-reload:before               { content: "\f025"; }
+
+.mfglabs-icon-heart:before                { content: "\2665"; }
+.mfglabs-icon-heart_broken:before         { content: "\f028"; }
+.mfglabs-icon-hashtag:before              { content: "\f029"; }
+.mfglabs-icon-reply:before                { content: "\f02a"; }
+.mfglabs-icon-retweet:before              { content: "\f02b"; }
+.mfglabs-icon-signin:before               { content: "\f02c"; }
+.mfglabs-icon-signout:before              { content: "\f02d"; }
+.mfglabs-icon-download:before             { content: "\f02e"; }
+.mfglabs-icon-upload:before               { content: "\f02f"; }
+
+
+.mfglabs-icon-placepin:before             { content: "\f031"; }
+.mfglabs-icon-display_screen:before       { content: "\f032"; }
+.mfglabs-icon-tablet:before               { content: "\f033"; }
+.mfglabs-icon-smartphone:before           { content: "\f034"; }
+.mfglabs-icon-connected_object:before     { content: "\f035"; }
+.mfglabs-icon-lock:before                 { content: "\F512"; }
+.mfglabs-icon-unlock:before               { content: "\F513"; }
+.mfglabs-icon-camera:before               { content: "\F4F7"; }
+.mfglabs-icon-isight:before               { content: "\f039"; }
+.mfglabs-icon-video_camera:before         { content: "\f03a"; }
+.mfglabs-icon-random:before               { content: "\f03b"; }
+.mfglabs-icon-message:before              { content: "\F4AC"; }
+.mfglabs-icon-discussion:before           { content: "\f03d"; }
+.mfglabs-icon-calendar:before             { content: "\F4C5"; }
+.mfglabs-icon-ringbell:before             { content: "\f03f"; }
+
+.mfglabs-icon-movie:before                { content: "\f040"; }
+.mfglabs-icon-mail:before                 { content: "\2709"; }
+.mfglabs-icon-pen:before                  { content: "\270F"; }
+.mfglabs-icon-settings:before             { content: "\9881"; }
+.mfglabs-icon-measure:before              { content: "\f044"; }
+.mfglabs-icon-vector:before               { content: "\f045"; }
+.mfglabs-icon-vector_pen:before           { content: "\2712"; }
+.mfglabs-icon-mute_on:before              { content: "\f047"; }
+.mfglabs-icon-mute_off:before             { content: "\f048"; }
+.mfglabs-icon-home:before                 { content: "\2302"; }
+.mfglabs-icon-sheet:before                { content: "\f04a"; }
+.mfglabs-icon-arrow_big_right:before      { content: "\21C9"; }
+.mfglabs-icon-arrow_big_left:before       { content: "\21C7"; }
+.mfglabs-icon-arrow_big_down:before       { content: "\21CA"; }
+.mfglabs-icon-arrow_big_up:before         { content: "\21C8"; }
+.mfglabs-icon-dribbble_circle:before      { content: "\f04f"; }
+
+.mfglabs-icon-dribbble:before             { content: "\f050"; }
+.mfglabs-icon-facebook_circle:before      { content: "\f051"; }
+.mfglabs-icon-facebook:before             { content: "\f052"; }
+.mfglabs-icon-git_circle_alt:before       { content: "\f053"; }
+.mfglabs-icon-git_circle:before           { content: "\f054"; }
+.mfglabs-icon-git:before                  { content: "\f055"; }
+.mfglabs-icon-octopus:before              { content: "\f056"; }
+.mfglabs-icon-twitter_circle:before       { content: "\f057"; }
+.mfglabs-icon-twitter:before              { content: "\f058"; }
+.mfglabs-icon-google_plus_circle:before   { content: "\f059"; }
+.mfglabs-icon-google_plus:before          { content: "\f05a"; }
+.mfglabs-icon-linked_in_circle:before     { content: "\f05b"; }
+.mfglabs-icon-linked_in:before            { content: "\f05c"; }
+.mfglabs-icon-instagram:before            { content: "\f05d"; }
+.mfglabs-icon-instagram_circle:before     { content: "\f05e"; }
+.mfglabs-icon-mfg_icon:before             { content: "\f05f"; }
+.mfglabs-icon-xing:before                 { content: "\F532"; }
+.mfglabs-icon-xing_circle:before          { content: "\F533"; }
+
+.mfglabs-icon-mfg_icon_circle:before      { content: "\f060"; }
+.mfglabs-icon-user:before                 { content: "\f061"; }
+.mfglabs-icon-user_male:before            { content: "\f062"; }
+.mfglabs-icon-user_female:before          { content: "\f063"; }
+.mfglabs-icon-users:before                { content: "\f064"; }
+
+.mfglabs-icon-file_open:before            { content: "\F4C2"; }
+.mfglabs-icon-file_close:before           { content: "\f067"; }
+.mfglabs-icon-file_alt:before             { content: "\f068"; }
+.mfglabs-icon-file_close_alt:before       { content: "\f069"; }
+.mfglabs-icon-attachment:before           { content: "\f06a"; }
+.mfglabs-icon-check:before                { content: "\2713"; }
+.mfglabs-icon-cross_mark:before           { content: "\274C"; }
+.mfglabs-icon-cancel_circle:before        { content: "\F06E"; }
+.mfglabs-icon-check_circle:before         { content: "\f06d"; }
+.mfglabs-icon-magnifying:before           { content: "\F50D"; }
+
+.mfglabs-icon-inbox:before                { content: "\f070"; }
+.mfglabs-icon-clock:before                { content: "\23F2"; }
+.mfglabs-icon-stopwatch:before            { content: "\23F1"; }
+.mfglabs-icon-hourglass:before            { content: "\231B"; }
+.mfglabs-icon-trophy:before               { content: "\f074"; }
+.mfglabs-icon-unlock_alt:before           { content: "\F075"; }
+.mfglabs-icon-lock_alt:before             { content: "\F510"; }
+.mfglabs-icon-arrow_doubled_right:before  { content: "\21D2"; }
+.mfglabs-icon-arrow_doubled_left:before   { content: "\21D0"; }
+.mfglabs-icon-arrow_doubled_down:before   { content: "\21D3"; }
+.mfglabs-icon-arrow_doubled_up:before     { content: "\21D1"; }
+.mfglabs-icon-link:before                 { content: "\f07B"; }
+.mfglabs-icon-warning:before              { content: "\2757"; }
+.mfglabs-icon-warning_alt:before          { content: "\2755"; }
+.mfglabs-icon-magnifying_plus:before      { content: "\f07E"; }
+.mfglabs-icon-magnifying_minus:before     { content: "\f07F"; }
+
+.mfglabs-icon-white_question:before       { content: "\2754"; }
+.mfglabs-icon-black_question:before       { content: "\2753"; }
+.mfglabs-icon-stop:before                 { content: "\f080"; }
+.mfglabs-icon-share:before                { content: "\f081"; }
+.mfglabs-icon-eye:before                  { content: "\f082"; }
+.mfglabs-icon-trash_can:before            { content: "\f083"; }
+.mfglabs-icon-hard_drive:before           { content: "\f084"; }
+.mfglabs-icon-information_black:before    { content: "\f085"; }
+.mfglabs-icon-information_white:before    { content: "\f086"; }
+.mfglabs-icon-printer:before              { content: "\f087"; }
+.mfglabs-icon-letter:before               { content: "\f088"; }
+.mfglabs-icon-soundcloud:before           { content: "\f089"; }
+.mfglabs-icon-soundcloud_circle:before    { content: "\f08A"; }
+.mfglabs-icon-anchor:before               { content: "\2693"; }
+
+.mfglabs-icon-female_sign:before          { content: "\2640"; }
+.mfglabs-icon-male_sign:before            { content: "\2642"; }
+.mfglabs-icon-joystick:before             { content: "\F514"; }
+.mfglabs-icon-high_voltage:before         { content: "\26A1"; }
+.mfglabs-icon-fire:before                 { content: "\F525"; }
+.mfglabs-icon-newspaper:before            { content: "\F4F0"; }
+.mfglabs-icon-chart:before                { content: "\F526"; }
+.mfglabs-icon-spread:before               { content: "\F527"; }
+
+.mfglabs-icon-spinner_1:before            { content: "\F528"; }
+.mfglabs-icon-spinner_2:before            { content: "\F529"; }
+
+.mfglabs-icon-chart_alt:before            { content: "\F530"; }
+.mfglabs-icon-label:before                { content: "\F531"; }

@@ -1,0 +1,7 @@
+@* tableheader Template File *@
+@(headers: List[(String, Option[Int])], classNames: List[String])
+<thead>
+	@for(((header, width), className) <- headers.zip(classNames)) {
+		<th @if(width.isDefined) { width="@width.get" } class="th-@className">@header</th>	
+	}
+</thead>

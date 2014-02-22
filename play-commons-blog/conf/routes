@@ -1,0 +1,21 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /                           controllers.FrontendController.index
+GET		/posts/:id					controllers.FrontendController.entry(id: Long)
+GET		/topic/:topic				controllers.FrontendController.topic(topic: Long)
+
+GET		/login						controllers.Login.login
+GET		/logout						controllers.Login.logout
+POST 	/login						controllers.Login.loginPost
+GET		/legal						controllers.FrontendController.legal
+
+# Dynamic javascript routes
+GET    /javascriptroutes                  controllers.Application.javascriptroutes()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /webjars/*file              controllers.WebJarAssets.at(file)
+
+->		/admin						com.wellnr.commons.play.controllers.CRUDRouter

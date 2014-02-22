@@ -1,0 +1,39 @@
+@(model: viewmodels.BlogViewModel)(request: jp.t2v.lab.play2.stackc.RequestWithAttributes[_])
+
+@main("Private Blog of Michael Wellner")(request) {
+
+	@if(model.headentry.isDefined) {
+		@common.contentheader(entry(model.headentry.get))
+	}
+	
+	@common.container {	
+		@common.tabs{
+			    <h2>Current Tweet</h2>
+			    <p>
+			    	@Html(model.twitterStatus.text)
+			    </p>
+			    <p class="small">
+			    	via @Html(model.twitterStatus.user) on Twitter &#8211; @model.twitterStatus.created
+			    </p>
+			}{
+			    <h2>About Me</h2>
+				<p>
+				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo.
+				</p>
+			}{
+			    <h2>Current Project</h2>
+				<p>
+				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo.
+				</p>
+			}.map(common.columns.apply)
+	}
+	
+	@common.content {
+		@for(e <- model.entries) {
+			@entry(e)
+		}
+	} { 
+		@navigation(model.topics)
+	}
+	
+}

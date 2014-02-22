@@ -1,0 +1,61 @@
+var XHR = {
+    sayHello: jsRoutes.controllers.Application.sayHello
+};
+
+function LoginViewModel() {
+	this.error = ko.observable("");
+
+    this.signin = function() {
+	    // this.error("EIn Fehler du Sack!");
+	    
+	    
+	    $.ajax({
+            type: XHR.sayHello().type,
+            url: XHR.sayHello().url,
+            data: '{"name": "Hallo", "age": 23}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (msg) {
+               console.log(msg)
+            },
+            error: function (errormessage) {
+				console.log(errormessage);
+            }
+        });
+	    
+	    /*
+	    var d = { 'name': "John Portella", 'age': 13 };
+	    
+	    console.log($.post)
+	    
+	    $.post(XHR.sayHello().url, { name: "Hallo?" }, function(data) {
+			alert( "Data Loaded: " + data );
+		}, "text/json").fail(function(data) {
+			console.log(data);
+		});
+		*/
+		/*
+		alert("Hallo?");
+		alert(XHR.sayHello);
+		alert(XHR.sayHello().url);
+		alert(XHR.sayHello().type);
+		
+		var d = { 'name': "John Portella", 'age': 13 };
+		$.ajax({
+			type :  "POST",
+			dataType: 'json',
+			data: JSON.stringify(d),
+			url  :  XHR.sayHello.url,
+			success: function(data) {
+				console.log(data);
+			}
+		});
+		*/
+		
+		// $.post(XHR.sayHello().url, {name: "Hallo", age: 12});
+    }
+};
+
+$(function() {
+	ko.applyBindings(new LoginViewModel());
+});

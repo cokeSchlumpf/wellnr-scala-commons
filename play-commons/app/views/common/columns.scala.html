@@ -1,0 +1,21 @@
+@(cols: Html *)(widths: List[Int] = List()) 
+
+@if(widths.size != cols.size) {
+	@defining(12 / cols.size) { width =>
+		<div class="row">
+			@for(column <- cols) {
+				<div class="col-md-@width">
+					@column
+				</div>
+			}
+		</div>
+	}
+} else {
+	<div class="row">
+		@for((column, width) <- cols.zip(widths)) {
+			<div class="col-md-@width">
+				@column
+			</div>
+		}
+	</div>
+}

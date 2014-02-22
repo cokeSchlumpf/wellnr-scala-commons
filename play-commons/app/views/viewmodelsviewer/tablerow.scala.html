@@ -1,0 +1,12 @@
+@* tablerow Template File *@
+@(content: List[String], classNames: List[String], action: Option[Html])
+
+<tr>
+	@for((col, className) <- content.zip(classNames)) {
+		<td class="td-middle td-@className">@col</td>	
+	}
+	
+	@if(action.isDefined) {
+		<td style="text-align: right" class="td-middle">@action</td>
+	}
+</tr>
