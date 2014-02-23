@@ -11,7 +11,7 @@ object projectSettings {
 	
 	lazy val buildSettings = Seq(
 		organization 			:= "com.wellnr",
-		version 				:= "1.0.0-RC1",
+		version 				:= "1.0.0-RC3-SNAPSHOT",
 		scalaVersion 			:= "2.10.3",
 		logLevel 				:= Level.Info,
 		exportJars				:= true,
