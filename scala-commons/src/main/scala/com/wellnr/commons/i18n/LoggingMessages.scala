@@ -28,8 +28,8 @@ trait LoggingMessages extends Messages {
   @De("Beende {0}.")
   def exit(methodname: String): String
 
-  @En("Logger initialized on file {0}.")
-  @De("Der Logger wurde erfolgreich initialisiert. Die Logfile ist {0}.")
-  def initialized(filename: String): String
+  @En("Logger initialized on file {0} with log level {1}.")
+  @De("Der Logger wurde erfolgreich initialisiert. Die Logfile ist {0}, das Log-Level {1}.")
+  def initialized(filename: String, loglevel: String): String
 
 }

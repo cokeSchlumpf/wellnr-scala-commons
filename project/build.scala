@@ -28,7 +28,7 @@ object ScalaCommonsBuild extends Build {
     
   lazy val commonsBlog = play.Project("play-commons-blog", path = file("play-commons-blog"))
   	.dependsOn(playCommons)
-  	.settings(buildSettings ++ playScalaSettings ++ playSettings ++ publishSettings: _*)
+  	.settings(buildSettings ++ playSettings ++ playScalaSettings  ++ publishSettings: _*)
     .settings(libraryDependencies ++= dependencies.wellnrBlogDependencies ++ List(jdbc))
     .settings(Keys.fork in (Test) := false)
     

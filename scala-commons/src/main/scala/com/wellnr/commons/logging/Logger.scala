@@ -17,7 +17,7 @@ import com.wellnr.commons.i18n.i18n
  * @author Michael Wellner
  * @since 2013/10/12
  */
-class Logger {
+class Logger(node: String) {
 
   /*
    * Handler for logging output on console.
@@ -34,17 +34,15 @@ class Logger {
    * Actual instance of the logger.
    */
   private val log = LoggerFactory(
-    node = "ips-base",
-    level = Some(TwitterLogger.TRACE),
+    node = node,
+    level = Some(cLogLevel),
     handlers = List(iConsoleHandlerConfig, iFileHandlerConfig),
     useParents = false)()
 
-  log.info(i18n.logging.initialized(cLogFile))
+  log.info(i18n.logging.initialized(cLogFile, cLogLevel.asString))
 
   /**
    * This method returns the name of the method which called the Logger method.
-   *
-   * @param pArgs The arguments which should be appended to the method name.
    */
   private def calledFromMethod: String = {
     val stackTraceElement = 7;
@@ -135,4 +133,4 @@ class Logger {
 
 }
 
-object DefaultLogger extends Logger
+object DefaultLogger extends Logger("scala-commons")

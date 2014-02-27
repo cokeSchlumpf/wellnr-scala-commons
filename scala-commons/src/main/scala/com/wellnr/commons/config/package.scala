@@ -4,14 +4,13 @@ package object config extends config.ConfigCheckingCapabilities {
 
   import scala.language.implicitConversions
   import com.typesafe.config.{ Config, ConfigFactory }
-  import com.wellnr.commons.config.RichConfig
 
   /**
    * The "global" plain application configuration settings.
    */
   final val settings: Config = {
     val config = ConfigFactory.load
-    config.checkValid(config, "ipsuite")
+    config.checkValid(config, "wellnr")
     config
   }
 
@@ -25,8 +24,8 @@ package object config extends config.ConfigCheckingCapabilities {
   /*
    * Applicaion wide settings
    */
-  final val cAppName = getString("ips.config.appname", "ipsapplication")
+  final val cAppName = getString("wellnr.config.appname", "wellnr-application")
 
-  final val cAppDir = getString("ips.config.home", System.getProperty("user.home") + "/." + cAppName)
+  final val cAppDir = getString("wellnr.config.home", System.getProperty("user.home") + "/." + cAppName)
 
 }

@@ -39,10 +39,10 @@ object projectSettings {
 			"-source", "1.7",
 			"-target", "1.7",
 			"-Xlint:unchecked",
-			"-Xlint:deprecation")) 
+			"-Xlint:deprecation"))
 
 	lazy val eclipseSettings = Seq(
-		EclipseKeys.createSrc := EclipseCreateSrc.Default + EclipseCreateSrc.Resource)
+		EclipseKeys.createSrc := (EclipseCreateSrc.Default + EclipseCreateSrc.Resource))
 		
 	lazy val playSettings = com.jamesward.play.BrowserNotifierPlugin.livereload ++ scalaCompilerOptions ++ Seq(
 	
