@@ -31,10 +31,10 @@ trait DAOCapabilities[I, E] {
   /**
    * Insert a whole list of new entities.
    *
-   * @param
-   * 	entities
+   * @param entities
+   *    The entities to insert.
    * @return
-   * 	A list with the entities containing their new id.
+   *    A list with the entities containing their new id.
    */
   def insertAll(entities: Seq[TEntity])(implicit s: Session): Seq[TEntity] = entities.map(insert)
 
@@ -89,7 +89,8 @@ abstract class AbstractEntityDAOCapabilities[E <: AbstractEntity[E], T <: Abstra
    * Insert a new entity.
    *
    * @param entity
-   * @returns A copy of instance with the calculated entity id.
+   * @return
+   *         A copy of instance with the calculated entity id.
    */
   def insert(entity: E)(implicit s: Session): E = {
     entity.id match {
@@ -110,7 +111,6 @@ abstract class AbstractEntityDAOCapabilities[E <: AbstractEntity[E], T <: Abstra
   /**
    * Update an entity.
    *
-   * @param id
    * @param entity
    */
   def update(entity: E)(implicit s: Session) = {

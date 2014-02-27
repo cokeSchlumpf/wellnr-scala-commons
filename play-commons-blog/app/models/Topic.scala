@@ -1,6 +1,7 @@
 package models
 
 import com.wellnr.commons.model._
+import scala.slick.lifted.{MappedProjection, Projection}
 import com.wellnr.commons.play.database.AbstractTable
 import com.wellnr.commons.play.database.AbstractEntityDAOCapabilities
 
@@ -18,7 +19,10 @@ case class Topic(
   id: Option[ID[Topic]],
 
   /** title of the topic */
-  title: String) extends AbstractEntity[Topic] {
+  title: String,
+
+  /** a description of the topic */
+  description: String = "") extends AbstractEntity[Topic] {
 
   def withId(id: ID[Topic]) = this.copy(Some(id))
 
@@ -30,9 +34,18 @@ case class Topic(
 private[models] class Topics extends AbstractTable[Topic]("TOPIC") {
 
   def title = column[String]("title", O.NotNull)
+  def description = column[String]("description", O.DBType("text"))
 
-  def * = id.? ~ title <> (Topic.apply _, Topic.unapply _)
+  def * = id.? ~ title ~ description <> (Topic.apply _, Topic.unapply _)
 
+  /**
+   * @inheritdoc
+   */
+  override def forInsert = title ~ description <> ({
+    (title, description) => Topic(None, title, description)
+  }, {
+    topic: Topic => Some((topic.title, topic.description))
+  })
 }
 
 /**

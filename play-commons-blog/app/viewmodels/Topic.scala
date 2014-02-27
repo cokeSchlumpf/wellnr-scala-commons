@@ -19,8 +19,9 @@ import com.wellnr.commons.play.viewmodels.AbstractEntityTableModel
 case class TopicsViewModel(data: Seq[Topic]) extends AbstractEntityTableModel(data) {
   
   def name = column[String]("Name")
+  def description = column[String]("Description", false)
   
-  def * = ((id ~ name) <> (Topic.unapply _)) ~ delete ~ edit
+  def * = ((id ~ name ~ description) <> (Topic.unapply _)) ~ delete ~ edit
   
 }
 
@@ -30,7 +31,8 @@ object TopicEditViewModel extends EditViewModel[Topic] {
   
   lazy val formviewmodel = FormViewModel(
       Hidden("id", optional(id[Topic])), 
-      Text("Name", "name", text))(Topic.apply _)(Topic.unapply _)
+      Text("Name", "name", text),
+      Textarea("Description", "description", text))(Topic.apply _)(Topic.unapply _)
   
 }
 

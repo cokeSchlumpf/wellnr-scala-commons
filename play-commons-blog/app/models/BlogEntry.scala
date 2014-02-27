@@ -109,12 +109,20 @@ object BlogEntry {
 private[models] class BlogEntries extends AbstractTable[BlogEntryDE]("BLOG_ENTRY") {
   
   def title = column[String]("title", O.NotNull)
-  def content = column[String]("content", O.NotNull)
+  def content = column[String]("content", O.NotNull, O.DBType("text"))
   def created = column[Date]("date", O.NotNull)
   def author = column[ID[User]]("author", O.NotNull)
 
   def * = id.? ~ title ~ content ~ created ~ author <> (BlogEntry.apply _, { e: BlogEntryDE => BlogEntry.unapply(e) })
-  
+
+  /**
+   * @inheritdoc
+   */
+  override def forInsert = title ~ content ~ created ~ author <> ({
+    (title, content, created, author) => BlogEntry(None, title, content, created, author)
+  }, {
+    e: BlogEntryDE => Some((e.title, e.content, e.created, e.authorid))
+  })
 }
 
 /**
@@ -214,8 +222,4 @@ private[models] class BlogEntryTopicsTable extends AbstractManyToManyTable(BlogE
  * DAO for blog entry topics.
  */
 object BlogEntryTopics extends AbstractManyToManyDAO(BlogEntriesDAO, Topics, classOf[BlogEntryTopicsTable])
-
-private[models] class BlogEntryCommentsTable extends AbstractManyToManyTable(BlogEntriesDAO, Comments)
-object BlogEntryComments extends AbstractManyToManyDAO(BlogEntriesDAO, Comments, classOf[BlogEntryCommentsTable])
-
 

@@ -7,3 +7,5 @@ target/
 .target/
 .DS_Store
 bin/
+.idea/
+.idea_modules/

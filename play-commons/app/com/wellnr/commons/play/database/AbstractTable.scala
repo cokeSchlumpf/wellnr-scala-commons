@@ -5,7 +5,7 @@ import com.wellnr.commons.Development.NotImplemented
 import play.api.db.slick.Config.driver.simple._
 import com.wellnr.commons.model.{ AbstractEntity, ID }
 import com.wellnr.commons.logging.LoggingCapabilities
-import scala.slick.lifted.{ Projection2, Projection3 }
+import scala.slick.lifted.{ Projection2, Projection3, ColumnBase }
 import java.util.Date
 import scala.slick.lifted.Projection
 import play.api.db.slick.DB
@@ -26,13 +26,27 @@ abstract class AbstractTable[T <: AbstractEntity[T]](name: String) extends Table
 
   /** Implicit transformation java.util.Date <-> java.sql.Date */
   implicit val javaUtilDateTypeMapper = MappedTypeMapper.base[java.util.Date, java.sql.Date](
-    x => new java.sql.Date(x.getTime),
-    x => new java.util.Date(x.getTime))
+    x => new java.sql.Date(x.getTime()),
+    x => new java.util.Date(x.getTime()))
     
   implicit def idMapper[T <: AbstractEntity[T]] = MappedTypeMapper.base[ID[T], Long](_.id, ID[T](_))
     
-  /** This method should be used to add a new entity to the database */
-  def autoinc = * returning id
+  /**
+   * This method should be used to add a new entity to the database
+   *
+   * @return
+   *         The default projection.
+   */
+  def autoinc = forInsert returning id
+
+  /**
+   * Creates a projection for inserting entities. This is needed since some databases will not work with
+   * <code>* returning id</code> for inserting.
+   *
+   * @return
+   *         The column projection without the id column.
+   */
+  def forInsert: ColumnBase[T]
 
   /** The default technical id column */
   def id = column[ID[T]]("id", O.PrimaryKey, O.AutoInc)
@@ -88,5 +102,15 @@ class AbstractManyToManyTable[E1 <: AbstractEntity[E1], T1 <: AbstractTable[E1],
   def byFrom = createFinderBy(_.fromColumn)
   def byTo = createFinderBy(_.toColumn)
 
+  /**
+   * @inheritdoc
+   */
+  override def forInsert = fromColumn ~ toColumn <> ({
+    (from, to) =>
+      ManyToMany(None, from, to)
+  }, {
+    (mtm: ManyToMany[E1, E2]) =>
+      Some((mtm.from, mtm.to))
+  })
 }
 

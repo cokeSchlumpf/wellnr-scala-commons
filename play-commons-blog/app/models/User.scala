@@ -39,6 +39,14 @@ class Users extends AbstractUsers[User]("USER") {
 
   def * = id.? ~ username ~ email ~ password ~ lastlogin.? <> (User.apply _, User.unapply _)
 
+  /**
+   * @inheritdoc
+   */
+  override def forInsert = username ~ email  ~ password ~ lastlogin.? <> ({
+    (username, email, password, lastlogin) => User(None, username, email, password, lastlogin)
+  }, {
+    user: User => Some((user.username, user.email, user.password, user.lastlogin))
+  })
 }
 
 object Users extends UserDAOCapabilities[User, Users] {
