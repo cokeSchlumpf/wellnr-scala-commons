@@ -45,56 +45,60 @@
 </head>
 <body>
 	 <!-- Docs master nav -->
-    <header class="navbar navbar-inverse navbar-fixed-top bf-docs-nav" role="banner">
-        <div class="container">
-            <div class="navbar-header">
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bf-navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="/" class="navbar-brand"><span>wellnr</span>.com</a>
+	<div id ="wrapper">
+        <header class="navbar navbar-inverse navbar-fixed-top bf-docs-nav" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bf-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/" class="navbar-brand"><span>wellnr</span>.com</a>
+                </div>
+                <nav class="collapse navbar-collapse bf-navbar-collapse" role="navigation">
+                    @controllers.Request.userOption(request) match {
+                        case Some(user) => {
+                            <ul class="nav navbar-nav navbar-right">
+                            <li><a href="@routes.Login.logout">Log out</a></li></li>
+                                <li><a href="@controllers.AdminControllers.posts.routes.list">Admin</a></li></li>
+                            </ul>
+                        }
+                        case _ => {
+
+                        }
+                    }
+                </nav>
             </div>
-            <nav class="collapse navbar-collapse bf-navbar-collapse" role="navigation">
-            	@controllers.Request.userOption(request) match {
-            		case Some(user) => {
-            			<ul class="nav navbar-nav navbar-right">
-            			<li><a href="@routes.Login.logout">Log out</a></li></li>
-		                    <li><a href="@controllers.AdminControllers.posts.routes.list">Admin</a></li></li>
-		                </ul>
-            		}	
-            		case _ => {
-            			
-            		}
-            	}
-            </nav>
+        </header>
+
+        <div id="wrappercontent">
+            @content
         </div>
-    </header>
-    
-    @content
-    
-    <footer class="bf-footer bf-footer-margin">
-    	<div class="container">
-    		<div class="row">
-    			<div class="col-md-4">
-					<p class="legal">
-    					&copy; Michael Wellner 2014. <a href="@routes.FrontendController.legal">Terms</a>.<br />
-    				</p>
-    			</div>
-    			<div class="col-md-8 text-right">
-    				<a href="mailto:info@@michaelwellner.de" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-at"></span></a>
-    				<a href="http://www.michaelwellner.de" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-globe"></span></a>
-    				<a href="http://www.twitter.com/cokeSchlumpf" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-twitter"></span></a>
-    				<a href="http://www.facebook.com/wellnr" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-facebook"></span></a>
-    				<a href="https://plus.google.com/107831866287785178785/about" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-google_plus"></span></a>
-    				<a href="https://www.xing.com/profile/Michael_Wellner3" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-xing"></span></a>
-    				<a href="#" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-linked_in"></span></a>
-    				<a href="https://github.com/cokeSchlumpf" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-octopus"></span></a>
-    			</div>
-    		</div>
-    	</div>
-    </footer>
+
+        <footer class="bf-footer bf-footer-margin">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="legal">
+                            &copy; Michael Wellner 2014. <a href="@routes.FrontendController.legal">Terms</a>.<br />
+                        </p>
+                    </div>
+                    <div class="col-md-8 text-right">
+                        <a href="mailto:info@@michaelwellner.de" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-at"></span></a>
+                        <a href="http://www.michaelwellner.de" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-globe"></span></a>
+                        <a href="http://www.twitter.com/cokeSchlumpf" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-twitter"></span></a>
+                        <a href="http://www.facebook.com/wellnr" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-facebook"></span></a>
+                        <a href="https://plus.google.com/107831866287785178785/about" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-google_plus"></span></a>
+                        <a href="https://www.xing.com/profile/Michael_Wellner3" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-xing"></span></a>
+                        <a href="#" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-linked_in"></span></a>
+                        <a href="https://github.com/cokeSchlumpf" target="_blank" class="connect"><span class="mfglabs-icon mfglabs-icon-octopus"></span></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
     
     <script type="text/javascript">
 	    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */

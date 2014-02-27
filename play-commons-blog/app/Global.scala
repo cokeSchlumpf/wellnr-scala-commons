@@ -23,9 +23,14 @@ object InitialData {
     if (current.configuration.getString("application.mode").getOrElse("") != "DEV") return
     
     DB.withSession { implicit s: Session =>
-      val user = Users.findByUsername("admin") match {
+      val user = Users.list.headOption match {
         case Some(user) => user
-        case None => Users.insert("admin", "admin@blog.de", "password")
+        case None =>
+          val username = current.configuration.getString("wb.admin.username").getOrElse("admin")
+          val email = current.configuration.getString("wb.admin.email").getOrElse("admin@blog.de")
+          val password = current.configuration.getString("wb.admin.password").getOrElse("123")
+
+          Users.insert(username, email, password)
       }
 
       if (BlogEntries.count == 0) {
