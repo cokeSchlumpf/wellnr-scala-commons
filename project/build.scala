@@ -31,5 +31,5 @@ object ScalaCommonsBuild extends Build {
   	.settings(buildSettings ++ playSettings ++ playScalaSettings  ++ publishSettings: _*)
     .settings(libraryDependencies ++= dependencies.wellnrBlogDependencies ++ List(jdbc))
     .settings(Keys.fork in (Test) := false)
-    
+
 }
