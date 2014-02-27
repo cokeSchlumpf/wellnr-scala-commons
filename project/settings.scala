@@ -56,23 +56,11 @@ object projectSettings {
 
 	lazy val rootSettings = Defaults.defaultSettings ++ buildSettings ++ Seq(
 		publishArtifact in Compile := false)
-		
-	//lazy val publishSettings = Seq(
-	//	publishTo := Some(Resolver.file("file",  new File(Path.userHome.absolutePath+"/.m2/repository"))))
-	
+
+  // TODO: Make mvn-repo path configurable via environment variable ...
 	lazy val publishSettings = Seq(
 		publishMavenStyle 	:= true,
 		publishTo := Some(Resolver.file("file",  new File(Path.userHome.absolutePath+"/Documents/Workspaces/mvn-repo/"))))
-	
-	/*	
-	lazy val publishSettings = githubRepoSettings ++ Seq(
-		credentials 		:= Seq(Credentials("My Maven Repo", "wellner.de", "13103f1329u6", "repo2013")),
-		publishMavenStyle 	:= true,
-		publishTo 			:= Some(Resolver.url("My Maven Repo", "wellnr.de", "/") as ("13103f1329u6", "repo2013")),
-		localRepo 			:= Path.userHome / "Documents" / "Workspaces" / "github" / "repo"
-		githubRepo 			:= "git@github.com:cokeSchlumpf/repo.git"
-	)
-	*/
 
 	/**
 	 * Configure formatting preferences within this function...
