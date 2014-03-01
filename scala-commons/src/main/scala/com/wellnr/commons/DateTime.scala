@@ -23,8 +23,7 @@ object DateTime extends LoggingCapabilities {
    * @param date
    */
   implicit def dateToString(date: Date) = {
-    // TODO: Read the current language settings to format the date
-    val sf = new SimpleDateFormat("dd.MM.YYYY")
+    val sf = new SimpleDateFormat(i18n.i18n.base.dateFormatLong)
     sf.format(date)
   }
 
@@ -34,9 +33,8 @@ object DateTime extends LoggingCapabilities {
    * @param date
    */
   implicit def dateToDateTimeString(date: Date) = {
-    // TODO: Read the current language settings to format the date
     LOG.enter(date)
-    val sf = new SimpleDateFormat("dd.MM.YYYY HH:mm")
+    val sf = new SimpleDateFormat(i18n.i18n.base.dateTime)
     sf.format(date)
   }
 
