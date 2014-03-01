@@ -82,12 +82,7 @@ trait CRUDRouter extends Router.Routes {
 
     def register[I, E](controller: CRUDController[I, E]) = {
       val name = controller.name.toLowerCase
-
-      if (controllers.contains(name)) {
-        throw new IllegalArgumentException("A controller with this name already exists. Please chose another one by override `val name`")
-      } else {
-        controllers = controllers + (name -> controller)
-      }
+      controllers = controllers + (name -> controller)
     }
 
   }

@@ -50,7 +50,6 @@ object dependencies {
     h2jdbc,
     utillogging,
     scalareflect,
-    slf4jnop,
     slick)
 
   lazy val playCommonsDependencies = compile(
