@@ -24,7 +24,7 @@ object DateTime extends LoggingCapabilities {
    */
   implicit def dateToString(date: Date) = {
     val sf = new SimpleDateFormat(i18n.i18n.base.dateFormatLong)
-    sf.format(date)
+    LOG.exit(sf.format(date))
   }
 
   /**
@@ -35,7 +35,7 @@ object DateTime extends LoggingCapabilities {
   implicit def dateToDateTimeString(date: Date) = {
     LOG.enter(date)
     val sf = new SimpleDateFormat(i18n.i18n.base.dateTime)
-    sf.format(date)
+    LOG.exit(sf.format(date))
   }
 
   /**

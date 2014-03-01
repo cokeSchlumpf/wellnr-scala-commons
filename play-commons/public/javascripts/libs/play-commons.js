@@ -23,6 +23,12 @@ $(document).ready(function(){
 			$(elem).parent().addClass("active");
 		}
 	})
+
+	$(".pc-nav-list li a").each(function(i, elem) {
+        if (endsWith(document.URL, $(elem).attr("href"))) {
+            $(elem).parent().addClass("active");
+        }
+    })
 });
 
 function endsWith(str, suffix) {
