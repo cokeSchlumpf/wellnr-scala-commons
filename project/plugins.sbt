@@ -19,3 +19,6 @@ addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.2.1")
 
 // Auto refresh plugin ...
 addSbtPlugin("com.jamesward" %% "play-auto-refresh" % "0.0.7")
+
+// Plugin for Scala JS
+addSbtPlugin("org.scala-lang.modules.scalajs" % "scalajs-sbt-plugin" % "0.3")
