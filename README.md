@@ -25,7 +25,7 @@ libraryDependencies ++= Seq(
 play-commons
 ============
 
-The intention of the `play-commons` library is to abstract common use cases and patterns of many Play! applications. Since the library is build as modular as possible you are not restricted in your application architecture when using `play-commons`. But when you are going to use it as a framework your application is based on, you'll end up in an application architectur as illustrated in the following model:
+The intention of the `play-commons` library is to abstract common use cases and patterns of many Play! applications. Since the library is build as modular as possible you are not restricted in your application architecture when using `play-commons`. But when you are going to use it as a framework your application is based on, you'll end up with an application architecture as illustrated in the following model:
 
 WE NEED A NICE PICTURE HERE!
 
