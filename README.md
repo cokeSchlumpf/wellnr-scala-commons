@@ -5,10 +5,22 @@ This project contains two common libraries: `scala-commons` and `play-commons`. 
 
 In addition to the library projects there is a third project `play-commons-blog` and a related project `play-commons-blog-client` which can be seen as an example project which uses the play-commons library, where as play-commons-blog-client is just an project to play arround with Scala JS.
 
-Integrating the libraries with SBT
-----------------------------------
+Dependency Management
+---------------------
 
-Here we write something about the repository.
+To use the libraries, add the repository to your build.sbt:
+
+```
+"wellnr" at "https://raw.github.com/cokeSchlumpf/mvn-repo/master"
+```
+
+Then you can add the libraries to your dependencies:
+
+```
+libraryDependencies ++= Seq(
+  "com.wellnr" 	%% "play-commons" % "1.0.0-RC8" changing()
+)
+```
 
 play-commons
 ============
