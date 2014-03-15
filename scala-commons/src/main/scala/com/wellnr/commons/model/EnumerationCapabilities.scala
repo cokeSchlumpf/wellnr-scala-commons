@@ -12,14 +12,16 @@ import scala.language.existentials
  * @author Michael Wellner
  * @since 2014/03/15
  */
-abstract class EnumerationCapabilities[T](val asString: T => String) {
+trait EnumerationCapabilities {
 
-  type ENUM_TYPE = T
-  
+  type ENUM_TYPE
+
+  val asString: ENUM_TYPE => String
+
   /**
    * A Sequence of all enumeration values.
    */
-  val values: Seq[T]
+  val values: Seq[ENUM_TYPE]
 
   /**
    * Returns the enumeration value which is associated with the string.
@@ -31,10 +33,16 @@ abstract class EnumerationCapabilities[T](val asString: T => String) {
    * @throws EnumerationValueNotFoundException
    * If the value cannot be transformed to the enumeration type.
    */
-  def forString(value: String): T = values.find(asString(_) == value) match {
+  def forString(value: String): ENUM_TYPE = values.find(asString(_) == value) match {
     case Some(enumerationValue) => enumerationValue
     case _ => throw EnumerationValueNotFoundException(this.getClass, value)
   }
+
+}
+
+abstract class AbstractEnumeration[T](val asString: T => String) extends EnumerationCapabilities {
+
+  type ENUM_TYPE = T
 
 }
 
@@ -49,7 +57,7 @@ object EnumerationWithName {
     val name: String
   }
 
-  abstract class EnumerationCapabilities[T <: BaseType] extends com.wellnr.commons.model.EnumerationCapabilities[T](_.name)
+  abstract class EnumerationCapabilities[T <: BaseType] extends AbstractEnumeration[T](_.name)
 }
 
 /**
@@ -63,7 +71,7 @@ object EnumerationWithValue {
     val value: String
   }
 
-  abstract class EnumerationCapabilities[T <: BaseType] extends com.wellnr.commons.model.EnumerationCapabilities[T](_.value)
+  abstract class EnumerationCapabilities[T <: BaseType] extends AbstractEnumeration[T](_.value)
 }
 
 /**

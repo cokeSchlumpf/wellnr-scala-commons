@@ -36,15 +36,15 @@ abstract class AbstractTable[T <: AbstractEntity[T]](name: String) extends Table
    *
    * @param enumeration
    * The Enumeration object.
-   * @tparam T
+   * @tparam ENUM
    * The type of the enumeration.
    * @return
    * The mapper column mapper for the enumeration.
    */
-  def enumerationMapper[T <: EnumerationCapabilities](enumeration: T) = MappedTypeMapper.base[T#ENUM_TYPE, String](
+  def test[ENUM <: EnumerationCapabilities](enumeration: ENUM) = MappedTypeMapper.base[enumeration.type#ENUM_TYPE, String](
     enumValue => enumeration.asString(enumValue),
     stringValue => enumeration.forString(stringValue))
-    
+
   /**
    * This method should be used to add a new entity to the database
    *
