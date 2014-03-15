@@ -1,10 +1,10 @@
 package com.wellnr.commons.play.controllers.stackable
 
-import scala.concurrent.{ ExecutionContext, Future }
+import scala.concurrent.Future
 import play.api.Play.current
 import jp.t2v.lab.play2.stackc.{ RequestAttributeKey, RequestWithAttributes, StackableController }
-import play.api.mvc.{ Controller, RequestHeader, Results, Security, SimpleResult }
-import play.api.db.slick.{ DBAction, dbSessionRequestAsSession, DB, Session }
+import play.api.mvc.{ Controller, SimpleResult }
+import play.api.db.slick.{ DB, Session }
 import com.wellnr.commons.logging.LoggingCapabilities
 
 /**

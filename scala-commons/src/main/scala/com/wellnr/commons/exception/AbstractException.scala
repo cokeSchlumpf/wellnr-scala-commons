@@ -11,7 +11,8 @@ import scala.util.Try
  * @author Michael Wellner
  * @since 2013/10/22
  */
-protected[exception] trait ExceptionCapabilities extends LoggingCapabilities { self: Exception =>
+protected[exception] trait ExceptionCapabilities extends LoggingCapabilities {
+  self: Exception =>
 
   /**
    * The root exception type.
@@ -21,12 +22,12 @@ protected[exception] trait ExceptionCapabilities extends LoggingCapabilities { s
   /**
    * A throwable which caused this exception.
    */
-  val iThrowable: Option[Throwable]
+  protected val iThrowable: Option[Throwable]
 
   /**
    * The arguments which are used to format the translated message.
    */
-  val iArguments: Seq[Any];
+  protected val iMessage: String
 
   /**
    * The identifier contains the name of the exception appended to the name of all parent exceptions.
@@ -36,7 +37,15 @@ protected[exception] trait ExceptionCapabilities extends LoggingCapabilities { s
   /**
    * Returns a human readable message, possibly translated if there is an translation.
    */
-  lazy val iFormattedMessage = "%s %s" format (iIdentifier, iArguments.asArgumentList)
+  lazy val iFormattedMessage = "%s: %s" format (iIdentifier, iMessage)
+
+  /**
+   * Overrides the default getMessage Method from Exception.
+   *
+   * @return
+   * The Exceptions description.
+   */
+  override def getMessage() = iFormattedMessage
 
   /**
    * Logs this error.

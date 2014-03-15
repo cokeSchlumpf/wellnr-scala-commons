@@ -3,7 +3,7 @@ package com.wellnr.commons.play.database
 import scala.slick.lifted.ForeignKeyAction
 import com.wellnr.commons.Development.NotImplemented
 import play.api.db.slick.Config.driver.simple._
-import com.wellnr.commons.model.{ AbstractEntity, ID }
+import com.wellnr.commons.model.{ AbstractEntity, ID, EnumerationCapabilities}
 import com.wellnr.commons.logging.LoggingCapabilities
 import scala.slick.lifted.{ Projection2, Projection3, ColumnBase }
 import java.util.Date
@@ -25,11 +25,25 @@ abstract class AbstractTable[T <: AbstractEntity[T]](name: String) extends Table
   val tablename = name
 
   /** Implicit transformation java.util.Date <-> java.sql.Date */
-  implicit val javaUtilDateTypeMapper = MappedTypeMapper.base[java.util.Date, java.sql.Date](
+  implicit def javaUtilDateTypeMapper = MappedTypeMapper.base[java.util.Date, java.sql.Date](
     x => new java.sql.Date(x.getTime()),
     x => new java.util.Date(x.getTime()))
     
   implicit def idMapper[T <: AbstractEntity[T]] = MappedTypeMapper.base[ID[T], Long](_.id, ID[T](_))
+
+  /**
+   * Returns a mapper for an enumeration.
+   *
+   * @param enumeration
+   * The Enumeration object.
+   * @tparam T
+   * The type of the enumeration.
+   * @return
+   * The mapper column mapper for the enumeration.
+   */
+  def enumerationMapper[T <: EnumerationCapabilities](enumeration: T) = MappedTypeMapper.base[T#ENUM_TYPE, String](
+    enumValue => enumeration.asString(enumValue),
+    stringValue => enumeration.forString(stringValue))
     
   /**
    * This method should be used to add a new entity to the database

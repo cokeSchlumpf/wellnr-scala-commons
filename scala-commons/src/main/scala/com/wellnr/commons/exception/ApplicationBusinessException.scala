@@ -6,10 +6,8 @@ package com.wellnr.commons.exception
  * @author Michael Wellner
  * @since 2013/10/22
  */
-abstract class ApplicationBusinessException(val iThrowable: Option[Throwable], val iArguments: Any*) extends Exception with ExceptionCapabilities {
+abstract class ApplicationBusinessException(protected val iThrowable: Option[Throwable], protected val iMessage: String) extends Exception with ExceptionCapabilities {
 
-  val iBaseExceptionClass = classOf[ApplicationBusinessException]
-
-  override def getMessage() = this.iFormattedMessage
+  protected[exception] val iBaseExceptionClass = classOf[ApplicationBusinessException]
 
 }

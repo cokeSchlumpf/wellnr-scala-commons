@@ -12,6 +12,11 @@ trait SecurityCapabilities extends StackableController with LoggingCapabilities 
   implicit val defaultloginroute: play.api.mvc.Call
 
   /**
+   * Redirects to the default login form.
+   */
+  def onUnauthorized(implicit route: play.api.mvc.Call) = Results.Redirect(route)
+
+  /**
    * Around invoke of the action execution.
    */
   override def proceed[A](req: RequestWithAttributes[A])(f: RequestWithAttributes[A] => Future[SimpleResult]): Future[SimpleResult] = {

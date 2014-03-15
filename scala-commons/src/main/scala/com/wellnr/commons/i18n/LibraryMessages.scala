@@ -16,5 +16,6 @@ trait LibraryMessages extends Messages {
   def database: DatabaseMessages
   def logging: LoggingMessages
   def base: BaseMessages
+  def model: ModelMessages
 
 }

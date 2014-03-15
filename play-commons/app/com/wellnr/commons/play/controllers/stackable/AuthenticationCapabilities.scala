@@ -1,11 +1,10 @@
 package com.wellnr.commons.play.controllers.stackable
 
-import scala.concurrent.{ ExecutionContext, Future }
+import scala.concurrent.Future
 import jp.t2v.lab.play2.stackc.{ RequestAttributeKey, RequestWithAttributes, StackableController }
 import models._
 import play.api.mvc.{ Controller, RequestHeader, Results, Security, SimpleResult }
 import com.wellnr.commons.logging.LoggingCapabilities
-import com.wellnr.commons.Development
 
 /**
  * Copyright 2014. Michael Wellner.
@@ -30,11 +29,6 @@ trait AuthenticationCapabilities extends StackableController with LoggingCapabil
    * Returns the users name of the current session object.
    */
   private def username(request: RequestHeader) = request.session.get(Security.username)
-
-  /**
-   * Redirects to the default login form.
-   */
-  def onUnauthorized(implicit route: play.api.mvc.Call) = Results.Redirect(route)
 
   /**
    * Around invoke of the action execution.
